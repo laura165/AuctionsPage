@@ -1,38 +1,167 @@
-.App {
-  text-align: center;
+* {
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 1px;
+  background: #020424;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#navLinkLogo {
+  font-size: 17px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.homeWrapper {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.slick-list {
+  width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.slick-track {
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #170b4d;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8862e0;
+  border-radius: 5px;
+}
+
+.bidInput {
+  background-color: transparent;
+  color: #fff;
+  width: 120px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: #8862e0 solid 1.5px;
+}
+
+.bidInput:focus-visible {
+  outline: none;
+  outline-offset: none;
+}
+
+.buttonBidInp {
+  background: #8862e0;
+  color: white;
+  height: 40px;
+  width: 90px;
+  border-radius: 5px;
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.formInput {
+  background: #091434;
+}
+
+#modalTransition {
+  transition: all 3s;
+}
+
+.signINField {
+  background-color: transparent;
+  color: white;
+  border-radius: 20px;
+  border: 1.5px white solid;
+  width: 400px;
+  height: 50px;
+  margin-top: 28px;
+  padding-left: 20px;
+}
+
+.field {
+  background-color: transparent;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+}
+
+.signInBtn {
+  width: 400px;
+  height: 50px;
+  background: white;
+  color: purple;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 1.5px white solid;
+  margin-top: 60px;
+}
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  color: white;
+  font-size: 14px;
+}
+
+.bgAnimation {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #bb67dd);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
   }
-  to {
-    transform: rotate(360deg);
+  50% {
+    background-position: 100% 50%;
   }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bgAnimationSignUp {
+  background: linear-gradient(-45deg, #ae77c3, #845198, #4964ae, #cc5c97);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.remeberMe{
+  position: absolute;
+  left:60px;
+  bottom:75px;
+  
+}
+
+#fieldYes{
+  margin-top: 25px;
+}
+
+#message{
+   color: #fd0000;
+  font-weight: bold;
+  position: absolute;
+  font-size: 12px;
+  background: transparent;
+  bottom: 85px;
+  left: 60px;
 }
