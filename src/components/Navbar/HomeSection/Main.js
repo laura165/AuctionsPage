@@ -17,7 +17,7 @@ import HomeImgAsset from "../../../assets/images/HomeImgAsset.jpeg";
 
 const HomeSection = () => {
   return (
-    <HomeSectionContainer>
+    <HomeSectionContainer id="landing">
       <HomeBg id="transition-1">
         <HomeContent>
           <HomeH4>THE FUTURE OF ART</HomeH4>

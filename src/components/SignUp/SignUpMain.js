@@ -115,9 +115,10 @@ const SignUpMain = ({ showModal, handleCloseModal }) => {
                 if (password.length != 0 && password != comfirmPassword) {
                   return (message.textContent = "*Password do not match");
                 }
-                if (password.match(paswd) && password === comfirmPassword) {
-                  return "";
-                } else {
+                if (
+                  setPassword.value.length <= 8 &&
+                  password === comfirmPassword
+                ) {
                   return (message.textContent = "*Password too short");
                 }
               }}

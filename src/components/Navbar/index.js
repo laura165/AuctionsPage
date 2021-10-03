@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import {
   Nav,
   Bars,
@@ -41,15 +41,15 @@ const Navbar = () => {
 
   return (
     <Nav>
-      <NavLink id="navLinkLogo" to="/">
+      <NavLink id="navLinkLogo" to="#landing" smooth>
         <h1>tolkon</h1>
       </NavLink>
       <Bars />
       <NavMenu>
-        <NavLink to="/about" activeStyle>
+        <NavLink to="#trending" smooth activeStyle>
           Trending
         </NavLink>
-        <NavLink to="/services" activeStyle>
+        <NavLink to="#latest" smooth activeStyle>
           Market Activity
         </NavLink>
         {/* <NavLink to="/contact-us" activeStyle>

@@ -8,7 +8,7 @@ export const HomeSectionContainer = styled.div`
   padding-top: 85px;
   position: relative;
   background: #020424;
- 
+  margin-top: 90px;
 `;
 
 export const HomeBg = styled.div`
@@ -17,7 +17,7 @@ export const HomeBg = styled.div`
   height: 570px;
   padding-top: 40px;
   position: relative;
-  animation: Card 2s ;
+  animation: Card 2s;
   animation-timing-function: ease-in;
   @keyframes Card {
     from {
@@ -36,7 +36,7 @@ export const HomeImg = styled.div`
   right: 370px;
   bottom: -25px;
   padding-bottom: (height / width * 100) + "%";
-  animation: mymove 2s ;
+  animation: mymove 2s;
   animation-timing-function: ease-in;
 
   @keyframes mymove {
@@ -49,14 +49,12 @@ export const HomeImg = styled.div`
   }
 `;
 
-
 export const ImageHolder = styled.img`
   height: 530px;
   width: 550px;
 `;
 
 export const HomeContent = styled.div`
- 
   max-width: 650px;
   display: flex;
   flex-direction: column;
