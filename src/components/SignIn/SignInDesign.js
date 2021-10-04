@@ -1,8 +1,15 @@
 import userEvent from "@testing-library/user-event";
+import { ErrorMessage } from "formik";
 import React, { useState } from "react";
 import { GiEntryDoor } from "react-icons/gi";
 import ReactModal from "react-modal";
-import { Design, FormHeader, CloseIconSignIn, Text } from "./SignInElements";
+import {
+  Design,
+  FormHeader,
+  CloseIconSignIn,
+  Text,
+  ErrorMessageSignIn,
+} from "./SignInElements";
 
 const SignInDesign = ({ showModal, handleCloseModal }) => {
   const [email, setEmail] = React.useState("");
@@ -10,18 +17,12 @@ const SignInDesign = ({ showModal, handleCloseModal }) => {
   const [remeberMe, setRemeberMe] = React.useState(false);
   const [logedIn, setLogedIn] = React.useState(false);
   const [user, setUser] = useState();
+  const [errorMessage1, setErrorMessage1] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const signIn = (e) => {
     e.preventDefault();
-    // if (email.value == setEmail.value && password.value == setPassword.value) {
-    //   alert("You have successfully logged in.");
-    // }
-    // else {
-    //   alert("You haven't logged in")
-    // }
   };
-
-  
 
   return (
     <ReactModal
@@ -60,6 +61,7 @@ const SignInDesign = ({ showModal, handleCloseModal }) => {
         },
       }}
     >
+      <ErrorMessageSignIn>{errorMessage1}</ErrorMessageSignIn>
       <div>
         <CloseIconSignIn onClick={(e) => handleCloseModal(e)} />
         <FormHeader>Sign In</FormHeader>
@@ -105,17 +107,29 @@ const SignInDesign = ({ showModal, handleCloseModal }) => {
                   email === localStorage.getItem("userName") &&
                   password === localStorage.getItem("SignUpPassword")
                 ) {
-                  // showLinks(false)
+                  setIsLoggedIn(true);
+                  localStorage.setItem("Logged", true);
                 }
+
+                if (
+                  email !== localStorage.getItem("userName") ||
+                  password !== localStorage.getItem("SignUpPassword")
+                ) {
+                  setErrorMessage1("*This account dosen't exist");
+                }
+
                 if (
                   remeberMe &&
                   email === localStorage.getItem("userName") &&
                   password === localStorage.getItem("SignUpPassword")
                 ) {
                   localStorage.setItem("Token", `${email}${password}`);
+                  localStorage.setItem("Logged", true);
                 }
 
-                
+                setEmail("");
+                setPassword("");
+                handleCloseModal(e);
               }}
             >
               Sign In
@@ -123,9 +137,7 @@ const SignInDesign = ({ showModal, handleCloseModal }) => {
           </Design>
         </form>
       </div>
-      
     </ReactModal>
-
   );
 };
 

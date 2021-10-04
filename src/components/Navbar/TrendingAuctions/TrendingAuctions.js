@@ -12,8 +12,8 @@ import SimpleSlider from "./Swiper";
 
 const TrendingAuctions = () => {
   return (
-    <TrendingAuctionsContainer id="trending">
-      <TrendingAuctionsContent>
+    <TrendingAuctionsContainer>
+      <TrendingAuctionsContent id="trending">
         <TrendingAuctionsH4>TRENDIG AUCTIONS</TrendingAuctionsH4>
         <TrendingAuctionsDivider></TrendingAuctionsDivider>
         <LatestAuctions>

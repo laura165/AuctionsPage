@@ -13,6 +13,7 @@ const SignUpMain = ({ showModal, handleCloseModal }) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [comfirmPassword, setComfirmPassword] = React.useState("");
+  const [errorMessage, setErrorMessage] = React.useState("");
 
   return (
     <ReactModal
@@ -58,6 +59,7 @@ const SignUpMain = ({ showModal, handleCloseModal }) => {
         <form className="field" id="fieldYes">
           <Design>
             <input
+              pattern="/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
               className="signINField"
               type="username"
               name="username"
@@ -66,6 +68,7 @@ const SignUpMain = ({ showModal, handleCloseModal }) => {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
+              required
             />
             <input
               className="signINField"
@@ -87,40 +90,43 @@ const SignUpMain = ({ showModal, handleCloseModal }) => {
                 setComfirmPassword(e.target.value);
               }}
             />
-            <div id="message"> </div>
+            <div id="message">{errorMessage}</div>
+            <div id="usernameError"> </div>
 
             <button
-              className="signInBtn"
+              className="signUpBtn"
               type="submit"
               onClick={(e) => {
-                if (
-                  email !== "" &&
-                  password !== "" &&
-                  comfirmPassword !== "" &&
-                  password === comfirmPassword
-                ) {
-                  localStorage.setItem("userName", email);
-                  localStorage.setItem("SignUpPassword", password);
-
-                  setEmail("");
-                  setPassword("");
-                  setComfirmPassword("");
-                  handleCloseModal();
-                }
                 e.preventDefault();
-                let message = document.getElementById("message");
-                let passwordVar = localStorage.getItem("SignUpPassword");
-                let paswd =
-                  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{7,15}$/;
-                if (password.length != 0 && password != comfirmPassword) {
-                  return (message.textContent = "*Password do not match");
+
+                if (email === "" || password === "" || comfirmPassword === "") {
+                  setErrorMessage("*Please fill all fields");
+                  return;
                 }
-                if (
-                  setPassword.value.length <= 8 &&
-                  password === comfirmPassword
-                ) {
-                  return (message.textContent = "*Password too short");
+
+                if (password.length < 8) {
+                  setErrorMessage("*Password too short");
+                  return;
                 }
+
+                if (password !== comfirmPassword) {
+                  setErrorMessage("*Password do not match");
+                  return;
+                }
+
+                if (email !== "" && password !== "") {
+                  alert("You have logged in successfully");
+                  localStorage.setItem("isLoggedIn", true);
+                }
+
+                localStorage.setItem("userName", email);
+                localStorage.setItem("SignUpPassword", password);
+
+                setEmail("");
+                setPassword("");
+                setComfirmPassword("");
+                setErrorMessage("");
+                handleCloseModal(e);
               }}
             >
               Sign Up

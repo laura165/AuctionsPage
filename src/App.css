@@ -100,6 +100,18 @@
   font-weight: bold;
   border-radius: 20px;
   border: 1.5px white solid;
+  margin-top: 90px;
+}
+
+.signUpBtn {
+  width: 400px;
+  height: 50px;
+  background: white;
+  color: purple;
+  font-size: 17px;
+  font-weight: bold;
+  border-radius: 20px;
+  border: 1.5px white solid;
   margin-top: 60px;
 }
 
@@ -145,22 +157,21 @@
   }
 }
 
-.remeberMe{
+.remeberMe {
   position: absolute;
-  left:60px;
-  bottom:75px;
-  
+  left: 60px;
+  bottom: 70px;
 }
 
-#fieldYes{
+#fieldYes {
   margin-top: 25px;
 }
 
-#message{
-   color: #fd0000;
+#message {
+  color: #10ced2;
   font-weight: bold;
   position: absolute;
-  font-size: 12px;
+  font-size: 15px;
   background: transparent;
   bottom: 85px;
   left: 60px;

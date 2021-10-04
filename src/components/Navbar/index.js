@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   Nav,
   Bars,
@@ -14,10 +14,13 @@ import SignUpMain from "../SignUp/SignUpMain";
 
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
-  const [showModal2, setShowModal2] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const showLinks = (value) => {
-    setShowModal2(value);
+  
+
+  const handleSignOut = () => {
+    localStorage.removeItem("Token");
+    localStorage.removeItem('Logged')
   };
 
   const handleOpenModal = (i) => {
@@ -39,6 +42,8 @@ const Navbar = () => {
     setShowSignUp(false);
   };
 
+ 
+
   return (
     <Nav>
       <NavLink id="navLinkLogo" to="#landing" smooth>
@@ -55,13 +60,27 @@ const Navbar = () => {
         {/* <NavLink to="/contact-us" activeStyle>
           Contact Us
         </NavLink> */}
-        {showModal2 && (
+        {localStorage.getItem("Logged") === null && (
           <>
             <NavLink to="/SignUp" activeStyle onClick={handleOpenSignUp}>
               Sign Up
             </NavLink>
             <NavBtnLink to="/sign-in" onClick={handleOpenModal}>
               Sign In
+            </NavBtnLink>
+          </>
+        )}
+        {localStorage.getItem("Logged") === 'true' && (
+          <>
+            <p>Wallet</p>
+            <NavBtnLink
+              to="/sign-out"
+              onClick={() => {
+                handleSignOut();
+                
+              }}
+            >
+              Sign out
             </NavBtnLink>
           </>
         )}
